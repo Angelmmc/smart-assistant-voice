@@ -1,4 +1,15 @@
+const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const user = urlParams.get('username');
+
+    // Si el token no coincide, redirigir a la página de origen
+    if (token !== 'secreto') {
+      window.location.href = 'index.html';
+    }
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    console.log(user);
     // Definicion de elementos a modificar en el programa
     const orderResultDiv = document.getElementById('orderResult');
     const controlTexto = document.getElementById("controlTexto");
@@ -227,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const recurso = {
                 id: 1,
                 order: orden,
-                user: "ammc",
+                user: user,
                 dateTime: fechaHoraFormateada
             };
 
