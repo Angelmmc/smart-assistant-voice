@@ -57,17 +57,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     case result.includes("enciende") && result.includes("luces") && result.includes("jardín"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Encender luz de la sala");
-                        putJson(1,0,1,0,0,0,0,0);
-                        postJson("Encender luz de la sala");
+                        console.log("Encender luces del jardín");
+                        putJson(1,0,0,1,0,0,0,0);
+                        postJson("Encender luces del jardín");
                         break;
 
                     case result.includes("apaga") && result.includes("luces") && result.includes("jardín"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Apagar luz de la sala");
-                        putJson(0,0,1,0,0,0,0,0);
-                        postJson("Apagar luz de la sala");
+                        console.log("Apagar luces del jardín");
+                        putJson(0,0,0,1,0,0,0,0);
+                        postJson("Apagar luces del jardín");
                         break;   
+
+                    case result.includes("enciende") && result.includes("luces") && result.includes("jardín"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Encender luces del jardín");
+                        putJson(1,0,0,1,0,0,0,0);
+                        postJson("Encender luces del jardín");
+                        break;
+
+                    case result.includes("apaga") && result.includes("luces") && result.includes("jardín"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Apagar luces del jardín");
+                        putJson(0,0,0,1,0,0,0,0);
+                        postJson("Apagar luces del jardín");
+                        break;  
                         
                         
 
