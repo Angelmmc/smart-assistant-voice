@@ -29,17 +29,46 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Cambia el tamaño del texto al 5 de bootstrap al decir "tamaño 5"
                     case result.includes("enciende") && result.includes("luz") && result.includes("cuarto"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Encender luz del cuarto")
+                        console.log("Encender luz del cuarto");
                         putJson(1,1,0,0,0,0,0,0);
                         postJson("Encender luz del cuarto");
                         break;
 
                     case result.includes("apaga") && result.includes("luz") && result.includes("cuarto"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Apagar luz del cuarto")
+                        console.log("Apagar luz del cuarto");
                         putJson(0,1,0,0,0,0,0,0);
                         postJson("Apagar luz del cuarto");
                         break;
+                       
+                    case result.includes("enciende") && result.includes("luz") && result.includes("sala"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Encender luz de la sala");
+                        putJson(1,0,1,0,0,0,0,0);
+                        postJson("Encender luz de la sala");
+                        break;
+
+                    case result.includes("apaga") && result.includes("luz") && result.includes("sala"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Apagar luz de la sala");
+                        putJson(0,0,1,0,0,0,0,0);
+                        postJson("Apagar luz de la sala");
+                        break;   
+
+                    case result.includes("enciende") && result.includes("luces") && result.includes("jardín"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Encender luz de la sala");
+                        putJson(1,0,1,0,0,0,0,0);
+                        postJson("Encender luz de la sala");
+                        break;
+
+                    case result.includes("apaga") && result.includes("luces") && result.includes("jardín"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Apagar luz de la sala");
+                        putJson(0,0,1,0,0,0,0,0);
+                        postJson("Apagar luz de la sala");
+                        break;   
+                        
                         
 
                     // Abre facebook al decir "Abre Facebook"
