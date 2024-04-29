@@ -97,19 +97,21 @@ document.addEventListener('DOMContentLoaded', function () {
                         postJson("Cerrar cortinas");
                         break; 
 
-                    case result.includes("activa") && result.includes("alarma"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Activar alarma");
-                        putJson(1,0,0,0,0,0,1,0);
-                        postJson("Activar alarma");
-                        break;
-
-                    case result.includes("desactiva") && result.includes("alarma"):
+                        case result.includes("alarma") && result.includes("desactiva"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
                         console.log("Desactivar alarma");
                         putJson(0,0,0,0,0,0,1,0);
                         postJson("Desactivar alarma");
                         break; 
+
+                    case result.match("activa") && result.includes("alarma"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Activar alarma");
+                        putJson(1,0,0,0,0,0,1,0);
+                        postJson("Activar alarma");
+                        break; 
+
+                    
                         
                         
 
