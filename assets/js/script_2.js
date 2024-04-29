@@ -29,11 +29,18 @@ document.addEventListener('DOMContentLoaded', function () {
                     // Cambia el tamaño del texto al 5 de bootstrap al decir "tamaño 5"
                     case result.includes("enciende") && result.includes("luz") && result.includes("cuarto"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        
-                        console.log("entro a tamaño 5")
-                        putJson(0,1,0,0,0,0,0,0);
-                       
+                        console.log("Encender luz del cuarto")
+                        putJson(1,1,0,0,0,0,0,0);
+                        postJson("Encender luz del cuarto");
                         break;
+
+                    case result.includes("apaga") && result.includes("luz") && result.includes("cuarto"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Apagar luz del cuarto")
+                        putJson(0,1,0,0,0,0,0,0);
+                        postJson("Apagar luz del cuarto");
+                        break;
+                        
 
                     // Abre facebook al decir "Abre Facebook"
                     case result.includes("abrir facebook"):
@@ -105,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // La funcion trabaja con promesas para asegurar que los datos se inserten antes de que se realice la acción ya que si no
         // al cerrar una ventana esto ocurrira antes de que se envien los datos a MockApi
         return new Promise((resolve, reject) => {
-            
+
             const recursos = [
                 { nombre: "room", variable: room },
                 { nombre: "livingRoom", variable: livingRoom },
@@ -166,26 +173,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function postJson(accion) {
+    function postJson(orden) {
         // La funcion trabaja con promesas para asegurar que los datos se inserten antes de que se realice la acción ya que si no
         // al cerrar una ventana esto ocurrira antes de que se envien los datos a MockApi
         return new Promise((resolve, reject) => {
             // Definicion de la fecha actual formateandola al formato local de la PC
             const fechaHoraActual = new Date();
-            const fechaHoraFormateada = fechaHoraActual.toLocaleString();
+            const fechaHoraFormateada = fechaHoraActual.toISOString();
 
             // Se crea un objeto que almacena la fecha obtenida y la accion del parametro
             const recurso = {
                 id: 1,
-                accion: accion,
-                fecha: fechaHoraFormateada
+                order: orden,
+                user: "ammc",
+                dateTime: fechaHoraFormateada
             };
 
             // Se confierte el objeto a JSON
             const recursoJSON = JSON.stringify(recurso);
 
             // Se envia la solicitud HTTP a MockAPi usando el metodo POST, cabecera que indica que es Json y el cuerpo del json del objeto
-            fetch('https://660b0491ccda4cbc75dc4478.mockapi.io/accion', {
+            fetch('https://660b0491ccda4cbc75dc4478.mockapi.io/order', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
