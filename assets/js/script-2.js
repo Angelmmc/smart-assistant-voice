@@ -69,59 +69,50 @@ document.addEventListener('DOMContentLoaded', function () {
                         postJson("Apagar luces del jardín");
                         break;   
 
-                    case result.includes("enciende") && result.includes("luces") && result.includes("jardín"):
+                    case result.includes("enciende") && result.includes("ventilador"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Encender luces del jardín");
-                        putJson(1,0,0,1,0,0,0,0);
-                        postJson("Encender luces del jardín");
+                        console.log("Encender ventilador");
+                        putJson(1,0,0,0,1,0,0,0);
+                        postJson("Encender ventilador");
                         break;
 
-                    case result.includes("apaga") && result.includes("luces") && result.includes("jardín"):
+                    case result.includes("apaga") && result.includes("ventilador"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        console.log("Apagar luces del jardín");
-                        putJson(0,0,0,1,0,0,0,0);
-                        postJson("Apagar luces del jardín");
+                        console.log("Apagar ventilador");
+                        putJson(0,0,0,0,1,0,0,0);
+                        postJson("Apagar ventilador");
                         break;  
+
+                    case result.includes("abre") && result.includes("cortinas"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Abrir cortinas");
+                        putJson(1,0,0,0,0,1,0,0);
+                        postJson("Abrir cortinas");
+                        break;
+
+                    case result.includes("cierra") && result.includes("cortinas"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Cerrar Cortinas");
+                        putJson(0,0,0,0,0,1,0,0);
+                        postJson("Cerrar cortinas");
+                        break; 
+
+                    case result.includes("activa") && result.includes("alarma"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Activar alarma");
+                        putJson(1,0,0,0,0,0,1,0);
+                        postJson("Activar alarma");
+                        break;
+
+                    case result.includes("desactiva") && result.includes("alarma"):
+                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
+                        console.log("Desactivar alarma");
+                        putJson(0,0,0,0,0,0,1,0);
+                        postJson("Desactivar alarma");
+                        break; 
                         
                         
 
-                    // Abre facebook al decir "Abre Facebook"
-                    case result.includes("abrir facebook"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        insertarJson("Abrir facebook");
-                        window.open('https://www.facebook.com/');
-                        break;
-
-                    // Abre una pestaña vacia en el navegador
-                    case result.includes("abre nueva pestaña"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        insertarJson("Abrir pestaña en blanco");
-                        window.open('');
-                        break;
-
-                    // Cierra la pestaña actual
-                    case result.includes("cerrar pestaña actual"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        // Operacion asincrona para insertar en Json ya que si no la ventana se cierra antes de insertar la informacion Json
-                        insertarJson("Cerrar pestaña actual").then(() => {
-                            window.close();
-                        })
-                            .catch(error => {
-                                console.error('Error al insertar JSON:', error);
-                            });
-                        break;
-
-                    case result.includes("cerrar navegador"):
-                        orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        // Operacion asincrona para insertar en Json ya que si no la ventana se cierra antes de insertar la informacion Json
-                        insertarJson('Cerrar navegador')
-                            .then(() => {
-                                window.open('', '_self').close();
-                            })
-                            .catch(error => {
-                                console.error('Error al insertar JSON:', error);
-                            });
-                        break;
 
                     default:
                         orderResultDiv.innerHTML = `<p>Orden desconocida, intenta de nuevo</p>`;
