@@ -20,14 +20,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 console.log('Orden identificada:', result);
 
+                if (result.includes("nugget")){
+
+                    console.log("entro");
+
 
                 switch (true) {
                     // Cambia el tamaño del texto al 5 de bootstrap al decir "tamaño 5"
-                    case result.includes("tamaño 5"):
+                    case result.includes("enciende") && result.includes("luz") && result.includes("cuarto"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
-                        controlTexto.innerHTML = '<span class="fs-5 fw-bold fst-italic">Beto mi patrón</span>';
-                        // Metodo que inserta la acción realizada y fecha en MockApi
-                        insertarJson("Cambiar tamaño de texto");
+                        
+                        console.log("entro a tamaño 5")
+                        putJson(0,1,0,0,0,0,0,0);
+                       
                         break;
 
                     // Abre facebook al decir "Abre Facebook"
@@ -72,8 +77,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         orderResultDiv.innerHTML = `<p>Orden desconocida, intenta de nuevo</p>`;
                         break;
                 }
+            }
 
-            };
+            }
+            ;
 
             // Iniciar reconocimiento
             recognition.start();
@@ -94,7 +101,72 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 10000);
 
     // Funcion para guarda ordenes o acciones realizadas de acuerdo a la accion definida en el parametro
-    function insertarJson(accion) {
+    function putJson(status,room,livingRoom,garden,fan,curtain,alarm,camera) {
+        // La funcion trabaja con promesas para asegurar que los datos se inserten antes de que se realice la acción ya que si no
+        // al cerrar una ventana esto ocurrira antes de que se envien los datos a MockApi
+        return new Promise((resolve, reject) => {
+            
+            const recursos = [
+                { nombre: "room", variable: room },
+                { nombre: "livingRoom", variable: livingRoom },
+                { nombre: "garden", variable: garden },
+                { nombre: "fan", variable: fan },
+                { nombre: "curtain", variable: curtain },
+                { nombre: "alarm", variable: alarm },
+                { nombre: "camera", variable: camera }
+            ];
+            
+            let recurso;
+            
+            for (let i = 0; i < recursos.length; i++) {
+                if (recursos[i].variable === 1) {
+                    recurso = { [recursos[i].nombre]: status };
+                    break;
+                }
+            }
+            
+            if (!recurso) {
+                console.log("No se eligió un recurso válido");
+            }
+            
+
+
+
+            // Se crea un objeto que almacena la fecha obtenida y la accion del parametro
+            
+
+            // Se confierte el objeto a JSON
+            const recursoJSON = JSON.stringify(recurso);
+
+            // Se envia la solicitud HTTP a MockAPi usando el metodo POST, cabecera que indica que es Json y el cuerpo del json del objeto
+            fetch('https://662f095743b6a7dce30e4068.mockapi.io/status/1', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: recursoJSON
+            })
+                // Operacion asincrona en la que se espera a la respuesta de MockApi, si esta es invalida se indica que no se subio el archivo
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al subir el recurso');
+                    }
+                    return response.json();
+                })
+                // Operacion asincrona en la que si la informacion se subio correctamente se devuelve a la consola y la promesa se resuelve
+                .then(data => {
+                    console.log('Recurso subido exitosamente:', data);
+                    resolve(data);
+                })
+                // Operacion asincrona en la que si la informacion no subio correctamente se devuelve un error en la consola y se rechaza la promesa
+                .catch(error => {
+                    console.error('Error:', error);
+                    reject(error);
+                });
+        });
+    }
+
+    function postJson(accion) {
         // La funcion trabaja con promesas para asegurar que los datos se inserten antes de que se realice la acción ya que si no
         // al cerrar una ventana esto ocurrira antes de que se envien los datos a MockApi
         return new Promise((resolve, reject) => {
