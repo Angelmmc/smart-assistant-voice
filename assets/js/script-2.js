@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         postJson("Cerrar cortinas");
                         break; 
 
-                        case result.includes("alarma") && result.includes("desactiva"):
+                    case result.includes("alarma") && result.includes("desactiva"):
                         orderResultDiv.innerHTML = `<p>Orden identificada: <strong>${result}</strong></p>`;
                         console.log("Desactivar alarma");
                         putJson(0,0,0,0,0,0,1,0);
