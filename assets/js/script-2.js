@@ -1,11 +1,11 @@
 const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    const user = urlParams.get('username');
+const token = urlParams.get('token');
+const user = urlParams.get('username');
 
-    // Si el token no coincide, redirigir a la página de origen
-    if (token !== 'secreto') {
-      window.location.href = 'index.html';
-    }
+// Si el token no coincide, redirigir a la página de origen
+if (token !== 'secreto') {
+    window.location.href = 'index.html';
+}
 
 document.addEventListener('DOMContentLoaded', function () {
 

@@ -1,0 +1,18 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;/* Esto centra verticalmente en la ventana del navegador */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body{
+  background: linear-gradient(to bottom, #f0f1f5, #686868); ;
+  background-size: cover;
+  height: 100vh;
+}
+
