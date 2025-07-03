@@ -17,7 +17,7 @@ git clone https://github.com/Angelmmc/smart-assistant-voice.git
 ```
 2. Navigate to the project folder
 ```bash
-cd iot-car-front-end-mobile
+cd smart-assistant-voice
 ```
 3. Run the index.html file
    
@@ -33,7 +33,7 @@ cd iot-car-front-end-mobile
 
 ## Screenshot
 
-<img src="https://github.com/Angelmmc/smart-assistant-voice/blob/master/assets/icon/screenshots/app_screen.jpg" alt="App Screen" width="300"/>
+<img src="https://github.com/Angelmmc/smart-assistant-voice/blob/main/assets/img/main_page.png" alt="App Screen" width="500"/>
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
