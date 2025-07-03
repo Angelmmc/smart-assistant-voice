@@ -29,7 +29,8 @@ cd smart-assistant-voice
 2.  Once the pin is correct, you'll be redirected to the main page where the microphone is constantly listening.
 3.  There is a predefined list of actions you can perform with the assistant. To ensure the system recognizes your commands accurately, you must say them exactly as they are written. Additionally, start each command by saying the activation word "nugget", similar to how Alexa uses a wake word. For example:
 *"Nugget desactiva la alarma de la casa"*
-5.  When you correcly spell an action, it will appear on top of the page to confirm it was executed. 
+5.  When you correcly spell an action, it will appear on top of the page to confirm it was executed.
+6.  To Validate the action visit the smar-assistant-monitoring repository on the related section.
 
 ## Screenshot
 
