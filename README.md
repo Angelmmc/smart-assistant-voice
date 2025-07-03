@@ -34,7 +34,7 @@ cd smart-assistant-voice
 
 ## Screenshot
 
-<img src="https://github.com/Angelmmc/smart-assistant-voice/blob/main/assets/img/main_page.png" alt="App Screen" width="500"/>
+<img src="https://github.com/Angelmmc/smart-assistant-voice/blob/main/assets/img/main_page.png" alt="App Screen" width="1000"/>
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
